@@ -13,6 +13,6 @@ class HomeView(ListView):
     template_name = 'home.html'
 
 
-class ArticleView(DetailView):
+class ArticleDetailView(DetailView):
     model = Post
-    template_name = 'articles_detail.html'
+    template_name = 'article_details.html'
