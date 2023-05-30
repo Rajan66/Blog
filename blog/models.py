@@ -7,7 +7,7 @@ from django.urls import reverse
 class Post(models.Model):
     # form in django
     title = models.CharField(max_length=225)
-    title_tag = models.CharField(max_length=255,default="A Beautiful Blog")
+    title_tag = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # on_delete -  deletes all the posts when the user account is deleted
     body = models.TextField()
