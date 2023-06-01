@@ -31,7 +31,7 @@
                     <li>
                         <a href="{% url 'article-details' post.pk %}">{{ post.title }}</a>
                         - {{ post.author.first_name }} {{ post.author.last_name }}
-                        - {{ post.author.email }}
+                        - <a href="{% url 'edit-post' post.pk %}">Edit</a>
                         <br>
                         {{ post.body }}
                     </li>

@@ -24,8 +24,8 @@ class AddPostView(CreateView):
     # CreateView to create a new blog post
     model=Post
     template_name = 'add_post.html'
-    # fields = '__all__'
-    fields = ['title','title_tag','body']    
+    fields = '__all__'
+    # fields = ['title','title_tag','body']    
     # to put all the fields from the post model, we use __all__
     
     

@@ -20,6 +20,7 @@ class Post(models.Model):
         # self.author is a Object so need to parse to String 
         
     def get_absolute_url(self):
-        # 
-        return reverse("article-details", args=(str(self.id)))
+        # returns the page to the specified url after submitting the form
+        # return reverse("article-details", args=(str(self.id)))
+        return reverse("home")
     
