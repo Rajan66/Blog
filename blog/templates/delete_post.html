@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% comment %} {% block title %} Create a Add Post {% endblock %} {% endcomment %}
+{% block content %}
+    <h1>Delete Post</h1>
+    <br>
+    <h3>Delete: {{ post.title }}</h3>
+    <form method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            <strong>Warning</strong>
+            <p>You are about to delete your blog post permanently. You will not be able to undo this action.</p>
+            <button type="button" class="btn btn-secondary">
+               {# djlint:off H021 #}
+                <a href="{% url 'home' %}" style="color:white">Take me Back!</a>
+            </button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+    </form>
+{% endblock content %}
