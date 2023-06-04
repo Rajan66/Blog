@@ -10,5 +10,7 @@
 <br>
 <br>
 <small><a href="{% url 'edit-post' post.pk %}" class="btn btn-secondary">Edit</a></small> &nbsp;
+<small><a href="{% url 'delete-post' post.pk %}" class="btn btn-danger">Delete</a></small> &nbsp;
+// TODO: UI needs fixing a bit maybe back button to the far right will seem goood?
 <a href="{% url 'home' %}" class="btn btn-info">Back</a>
 {% endblock content %}
