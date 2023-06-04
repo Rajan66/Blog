@@ -1,4 +1,4 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <h1>{{ post.title }}</h1>
@@ -9,7 +9,6 @@
 
 <br>
 <br>
-<small><a href="{% url 'edit-post' post.pk %}">Edit</a></small>
-<br>
-<a href="{% url 'home' %}">Back</a>
+<small><a href="{% url 'edit-post' post.pk %}" class="btn btn-secondary">Edit</a></small> &nbsp;
+<a href="{% url 'home' %}" class="btn btn-info">Back</a>
 {% endblock content %}
