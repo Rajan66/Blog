@@ -13,6 +13,7 @@ class HomeView(ListView):
     # ListView to view all the blog posts in the database
     model = Post
     template_name = 'home.html'
+    
 
 
 class ArticleDetailView(DetailView):
