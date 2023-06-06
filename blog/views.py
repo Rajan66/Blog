@@ -20,6 +20,8 @@ class ArticleDetailView(DetailView):
     # DetailView to view a single blog post
     model = Post
     template_name = 'article_details.html'
+    ordering =['-post_date']
+    # does order by hour only by a whole day..
     
 
 class AddPostView(CreateView):
