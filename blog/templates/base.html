@@ -5,7 +5,7 @@
     <title>
         {% block title %}
         Blog
-        {% endblock %}
+        {% endblock title %}
     </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,7 +28,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-post' %}">Add post</a>
               </li>
-              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
             </ul>
             {% comment %} <form class="form-inline my-2 my-lg-0" role="search">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
