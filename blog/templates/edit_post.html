@@ -4,13 +4,17 @@
 {% endblock title %}
 Edit Post
 {% block content %}
-    <h1>Update Post</h1>
-    <br>
-    <form method="post">
-        <div class="form-group">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-info">Update</button>
-        </div>
-    </form>
+    {% if user.is_authenticated %}
+        <h1>Update Post</h1>
+        <br>
+        <form method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-info">Update</button>
+            </div>
+        </form>
+    {% else %}
+        <h1>Dude, you shall not passssss</h1>
+    {% endif %}
 {% endblock content %}

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% comment %} {% block title %} Create a Add Post {% endblock %} {% endcomment %}
 {% block content %}
+    {% if user.is_authenticated %}
     <h1>Delete Post</h1>
     <br>
     <h3>Delete: {{ post.title }}</h3>
@@ -16,4 +17,7 @@
             <button type="submit" class="btn btn-danger">Delete</button>
         </div>
     </form>
+{% else %}
+<h2>You shall not pass!!</h2>
+    {% endif %}
 {% endblock content %}
