@@ -6,7 +6,6 @@
         Blog
       {% endblock title %}
     </title>
-    
     <!-- Required meta tags -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,6 +36,9 @@
             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-post' %}">Add post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add-category' %}">Add category</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
