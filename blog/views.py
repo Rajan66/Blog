@@ -64,5 +64,6 @@ def CategoryView(request, cat):
     # This filters all the post of the specific category ie. cat (which ever is passed in the url)
     # Post meaning the Post table(model)
     post_category = Post.objects.filter(category= cat)
-    context = {'cat': cat.lower(), 'post_category': post_category}
+    # title() function makes the first letter uppercase
+    context = {'cat': cat.title(), 'post_category': post_category}
     return render(request, 'categories.html', context)
