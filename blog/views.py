@@ -63,7 +63,8 @@ class DeletePostView(DeleteView):
 def CategoryView(request, cat):
     # This filters all the post of the specific category ie. cat (which ever is passed in the url)
     # Post meaning the Post table(model)
-    post_category = Post.objects.filter(category= cat)
+    post_category = Post.objects.filter(category=cat.replace('-', ' '))
     # title() function makes the first letter uppercase
-    context = {'cat': cat.title(), 'post_category': post_category}
+    context = {'cat': cat.title().replace('-', ' '),
+               'post_category': post_category}
     return render(request, 'categories.html', context)

@@ -5,7 +5,8 @@
         {% for post in object_list %}
             <li>
                 <a href="{% url 'article-details' post.pk %}">{{ post.title }}</a>
-                - <a href="{% url 'category' post.category %}">{{ post.category }}</a>
+                {% comment %} The slugify filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens (-). {% endcomment %}
+                - <a href="{% url 'category' post.category %}">{{ post.category | slugify }}</a>
                 - {{ post.author.first_name }} {{ post.author.last_name }}
                 - {{ post.post_date }}
                 {% if user.is_authenticated %}
