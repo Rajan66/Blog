@@ -9,7 +9,7 @@
                 - <a href="{% url 'category' post.category %}">{{ post.category | slugify }}</a>
                 - {{ post.author.first_name }} {{ post.author.last_name }}
                 - {{ post.post_date }}
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and post.author.id == user.id %}
                     - <small><a href="{% url 'edit-post' post.pk %}">Edit</a></small>
                     - <small><a href="{% url 'delete-post' post.pk %}">Delete</a></small>
                 {% endif %}

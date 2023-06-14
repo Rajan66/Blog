@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
-{% block title %} Add Post {% endblock title %}
-
+{% block title %}
+    Add Post
+{% endblock title %}
 {% block content %}
     {% if user.is_authenticated %}
         <h1>Add Post</h1>
@@ -11,8 +11,13 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-info">Post</button>
-            </div>
-        </form>
+            </form>
+        </div>
+        <script>
+            var name = "{{ user.id }}"
+
+            document.getElementById('user').value = name
+        </script>
     {% else %}
         <h2>You shall not pass!!</h2>
     {% endif %}

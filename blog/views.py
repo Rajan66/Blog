@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, User
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
@@ -29,6 +29,7 @@ class ArticleDetailView(DetailView):
 class AddPostView(CreateView):
     # CreateView to create a new blog post
     model = Post
+    Post.author_id = User.id
     template_name = 'add_post.html'
     form_class = PostForm
     # fields = '__all__'

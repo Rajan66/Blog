@@ -10,7 +10,7 @@
     {{ post.body }}
     <br>
     <br>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and post.author.id == user.id %}
         <small><a href="{% url 'edit-post' post.pk %}" class="btn btn-secondary">Edit</a></small> &nbsp;
         <small><a href="{% url 'delete-post' post.pk %}" class="btn btn-danger">Delete</a></small> &nbsp;
     {% endif %}
