@@ -19,11 +19,25 @@ class HomeView(ListView):
     # does order by hour only by a whole day..
     # ordering = ['-id']
 
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
+
 
 class ArticleDetailView(DetailView):
     # DetailView to view a single blog post
     model = Post
     template_name = 'article_details.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
 
 
 class AddPostView(CreateView):
@@ -42,6 +56,13 @@ class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = ['name']
+    
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(AddCategoryView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
 
 
 class UpdatePostView(UpdateView):
@@ -49,12 +70,26 @@ class UpdatePostView(UpdateView):
     model = Post
     template_name = 'edit_post.html'
     form_class = EditForm
+    
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(UpdatePostView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
 
 
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+    
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(DeletePostView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
 
 # this is a functional view rather than a class based view
 # this is useful here because we can pass the request and the category as paramter
@@ -69,3 +104,9 @@ def CategoryView(request, cat):
     context = {'cat': cat.title().replace('-', ' '),
                'post_category': post_category}
     return render(request, 'categories.html', context)
+
+
+# def CategoryListView(request):
+#     category_list = Category.objects.all()
+#     context = {'category_list' : category_list}
+#     return render(request, 'category_list.html', context)

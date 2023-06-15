@@ -3,7 +3,7 @@
     Create a New Category
 {% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and user.id == 1 or user.id == 2 %}
         <h1>Add Category</h1>
         <br>
         <div class="form-group">
@@ -14,6 +14,6 @@
             </div>
         </form>
     {% else %}
-        <h2>You shall not pass!!</h2>
+        <h2>Eh? This might not be the page you are looking for</h2>
     {% endif %}
 {% endblock content %}

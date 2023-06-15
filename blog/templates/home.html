@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+    {% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
     <h1>Post</h1>
     <ul>
         {% for post in object_list %}
             <li>
                 <a href="{% url 'article-details' post.pk %}">{{ post.title }}</a>
                 {% comment %} The slugify filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens (-). {% endcomment %}
-                - <a href="{% url 'category' post.category %}">{{ post.category | slugify }}</a>
+                - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
                 - {{ post.author.first_name }} {{ post.author.last_name }}
                 - {{ post.post_date }}
                 {% if user.is_authenticated and post.author.id == user.id %}
@@ -18,4 +19,5 @@
             </li>
         {% endfor %}
     </ul>
+
 {% endblock content %}
