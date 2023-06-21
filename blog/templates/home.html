@@ -15,7 +15,7 @@
                 <!-- A div with card__details class to hold the details in the card  -->
                 <div class="card__details">
                     <!-- Span with tag class for the tag -->
-                    <span class="tag">{{ post.category }}</span>
+                    <span class="tag">{{ post.category|title }}</span>
                     <!-- A div with name class for the name of the card -->
                     <div class="name">{{ post.title }}</div>
                     <p>{{ post.body|slice:":200" }}</p>
