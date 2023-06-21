@@ -1,43 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    {% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
-    <h1>Post</h1>
-    <ul>
-        {% for post in object_list %}
-            <li>
-                <div id="container">
-                    <!-- A div with card class for the card  -->
-                    <div class="card">
-                        <img src="{% static 'img/denja_catto.jpg' %}" alt="Catoo">
-                        <!-- A div with card__details class to hold the details in the card  -->
-                        <div class="card__details">
-                            <!-- Span with tag class for the tag -->
-                            <span class="tag">{{ post.category }}</span>
-                            <!-- A div with name class for the name of the card -->
-                            <div class="name">{{ post.title }}</div>
-                            <p>{{ post.body|slice:":200" }}</p>
-                            <button>
-                                <a href=" {% url 'article-details' post.pk %} ">Read more</a>
-                            </button>
-                        </div>
-                    </div>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
+<h2>Blog posts</h2>
+<ul>
+    {% for post in object_list %}
+    <li>
+        <div id="container">
+            <!-- A div with card class for the card  -->
+            <div class="card">
+                <img src="{% static 'img/denja_catto.jpg' %}" alt="Catoo">
+                <!-- A div with card__details class to hold the details in the card  -->
+                <div class="card__details">
+                    <!-- Span with tag class for the tag -->
+                    <span class="tag">{{ post.category }}</span>
+                    <!-- A div with name class for the name of the card -->
+                    <div class="name">{{ post.title }}</div>
+                    <p>{{ post.body|slice:":200" }}</p>
+                    <button>
+                        <a href=" {% url 'article-details' post.pk %} ">Read more</a>
+                    </button>
                 </div>
-            </li>
-            <hr>
-        {% endfor %}
-    </ul>
+            </div>
+        </div>
+    </li>
+    <br/>
+    <hr>
+    {% endfor %}
+</ul>
 {% endblock content %}
 {% comment %} <li>
     <a>{{ post.title }}</a>
-    The slugify filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens (-).
+    The slugify filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens
+    (-).
     - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
     - {{ post.author.first_name }} {{ post.author.last_name }}
     - {{ post.post_date }}
     {% if user.is_authenticated and post.author.id == user.id %}
-        - <small><a href="{% url 'edit-post' post.pk %}">Edit</a></small>
-        - <small><a href="{% url 'delete-post' post.pk %}">Delete</a></small>
+    - <small><a href="{% url 'edit-post' post.pk %}">Edit</a></small>
+    - <small><a href="{% url 'delete-post' post.pk %}">Delete</a></small>
     {% endif %}
     <br>
     {{ post.body|slice:":100" }}
