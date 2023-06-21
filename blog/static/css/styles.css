@@ -3,24 +3,28 @@
     /* background-color:green; */
     background-color: #e3edf1;  
  }
- 
+  
  .edit1{
-    width: 300px;
-    height: 100px;
-    color:white;
-    border: none;
-    border-radius: 4px;
-    transition: ease-out 0.3s;
-    font-size: 2rem;
-    outline: none;
-    border: 3px solid #42fbf2;
     position: relative;
+    background: none;
+    width: 80px;
+    height: 40px;
+    border: 3px solid #dffb42;
+    border-style: solid;
+    border-radius: 50px;
+    transition: ease 0.3s;
+    font-size: 2rem;
+    overflow: hidden;
+    outline: none;
+    
     z-index: 1;
+    
 }
 
 .edit1:hover{
-    color: white;
-    cursor: pointer;
+    /* text-decoration: underline; */
+    background-color: white;
+    
 }
 
 .edit1:before{
@@ -32,10 +36,50 @@
     bottom: 0;
     opacity: 0;
     content: "";
-    background-color: #42fbf2;
+    background-color: #dffb42;
+    border-radius: 5px;
 }
 
 .edit1:hover:before{
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+}
+
+.delete1{
+    border: 3px solid #df0000;
+    width: 80px;
+    height: 40px;
+    border-radius: 50px;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+    
+    position: relative;
+    z-index: 1;
+}
+
+.delete1:hover{
+    background-color: white;
+    
+}
+
+.delete1:before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #f94242;
+    border-radius: 5px;
+}
+
+.delete1:hover:before{
     transition: 0.5s all ease;
     left: 0;
     right: 0;
