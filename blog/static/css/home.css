@@ -23,6 +23,7 @@ hr {
     border: 1px solid #bacdd8;
     padding: 8px;
     border-radius: 12px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .card__details {
@@ -41,17 +42,13 @@ img{
     object-fit: cover;
 }
 
-body{
-    font-family: 'Open Sans', sans-serif;
-}
-
 .tag{
     border: 2px solid #bcdff5;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 600;
     color: #788697;
-    padding: 1px;
+    padding: 5px;
 }
 
 .name{
@@ -71,6 +68,8 @@ p{
     padding: 10px 22px;
     border-radius: 50px; /*golo banauna lai :O */
     font-weight: 600;
+    width: 150px;
+    color: #2587f7;
     background-color: #e0efff;
     margin: 0 auto; /*center ma lyauna lai */
     display: block; /*button vayera mathi ko matra work hudaina so yo ni use garnu parxa :O */
