@@ -2,17 +2,18 @@
 {% block title %}
     Login
 {% endblock title %}
-
 {% block content %}
-{% load static %}
-    <link rel="stylesheet" href="{% static 'blog/static/css/login.css' %}">
-    <h1>Login</h1>
-    <br>
-    <div class="form-group">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-info">Login</button>
-        </div>
-    </form>
+    {% load static %}
+    <div class="main">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <h1>Login</h1>
+        <br>
+        <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-info">Login</button>
+            </div>
+        </form>
+    </div>
 {% endblock content %}
