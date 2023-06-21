@@ -15,7 +15,7 @@
     <br>
     {% if user.is_authenticated and post.author.id == user.id %}
         <small><a href="{% url 'edit-post' post.pk %}" class="btn edit1">Edit</a></small> &nbsp;
-        <small><a href="{% url 'delete-post' post.pk %}" class="btn btn-danger delete1">Delete</a></small> &nbsp;
+        <small><a href="{% url 'delete-post' post.pk %}" class="btn delete1">Delete</a></small> &nbsp;
     {% endif %}
     {% comment %} TODO: UI needs fixing a bit maybe back button to the far right will seem goood? {% endcomment %}
     <a href="{% url 'home' %}" class="btn btn-info">Back</a>
