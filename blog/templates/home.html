@@ -19,9 +19,10 @@
                     <!-- A div with name class for the name of the card -->
                     <div class="name">{{ post.title }}</div>
                     <p>{{ post.body|slice:":200" }}</p>
-                    <button>
+                    {% comment %} <button>
                         <a href=" {% url 'article-details' post.pk %} ">Read more</a>
-                    </button>
+                    </button>  {% endcomment %}
+                    <a class="btn btn-primary button" href="{% url 'article-details' post.pk %}">Read more</a>
                 </div>
             </div>
         </div>
