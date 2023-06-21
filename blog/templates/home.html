@@ -2,11 +2,7 @@
 {% block content %}
   
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/new.css' %}">
-
-    <div class="heading">
-        <h1>HEAD</h1>
-    </div>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/new.css' %}"> {% endcomment %}
 
     {% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
     <h1>Post</h1>
