@@ -1,3 +1,15 @@
-h1{
+h1 {
     color: #444444;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #bacdd8;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.card__details {
+
+    padding: 16px 8px 8px 8px;
 }
