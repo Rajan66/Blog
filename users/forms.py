@@ -10,8 +10,7 @@ from django import forms
 # also sets the fields in the form that we use in the html template
 
 class CreateUserForm(UserCreationForm):
-
     class Meta:
         model = get_user_model()
-        fields = ("first_name", "last_name",
-                  "email", "username", "password1", "password2")
+        fields = ["first_name", "last_name", "email",
+                  "username", "password1", "password2"]
