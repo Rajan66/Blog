@@ -1,12 +1,12 @@
 /* base ko lagi */
-.main{
+.main {
     /* background-color:green; */
-    background-color: #e3edf1;  
- }
-  
- .edit1{
+    background-color: #e3edf1;
+}
+
+.edit{
+    background: aqua;
     position: relative;
-    background: none;
     width: 80px;
     height: 40px;
     border: 3px solid #dffb42;
@@ -16,18 +16,15 @@
     font-size: 2rem;
     overflow: hidden;
     outline: none;
-    
     z-index: 1;
-    
 }
 
-.edit1:hover{
+.edit:hover{
     /* text-decoration: underline; */
     background-color: white;
-    
 }
 
-.edit1:before{
+.edit:before{
     transition: 0.5s all ease;
     position: absolute;
     top: 0;
@@ -40,7 +37,7 @@
     border-radius: 5px;
 }
 
-.edit1:hover:before{
+.edit:hover:before {
     transition: 0.5s all ease;
     left: 0;
     right: 0;
@@ -48,7 +45,7 @@
     z-index: -1;
 }
 
-.delete1{
+.delete {
     border: 3px solid #df0000;
     width: 80px;
     height: 40px;
@@ -56,17 +53,15 @@
     transition: ease-out 0.3s;
     font-size: 2rem;
     outline: none;
-    
     position: relative;
     z-index: 1;
 }
 
-.delete1:hover{
+.delete:hover {
     background-color: white;
-    
 }
 
-.delete1:before{
+.delete:before {
     transition: 0.5s all ease;
     position: absolute;
     top: 0;
@@ -79,7 +74,7 @@
     border-radius: 5px;
 }
 
-.delete1:hover:before{
+.delete:hover:before {
     transition: 0.5s all ease;
     left: 0;
     right: 0;
