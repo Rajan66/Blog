@@ -30,80 +30,24 @@
     transform: translateY(-5px);
 }
 
-/* .edit{
-    background: aqua;
+.nav-link{
+    transition: all 0.2s;
     position: relative;
-    width: 80px;
-    height: 40px;
-    border: 3px solid #dffb42;
-    border-style: solid;
-    border-radius: 50px;
-    transition: ease 0.3s;
-    font-size: 2rem;
-    overflow: hidden;
-    outline: none;
-    z-index: 1;
 }
 
-.edit:hover{
-    /* text-decoration: underline; */
-    /* background-color: white;
-}
-
-.edit:before{
-    transition: 0.5s all ease;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    right: 50%;
-    bottom: 0;
+.nav-link::after{
+    content: '';
     opacity: 0;
-    content: "";
-    background-color: #dffb42;
-    border-radius: 5px;
-}
-
-.edit:hover:before {
-    transition: 0.5s all ease;
-    left: 0;
-    right: 0;
-    opacity: 1;
-    z-index: -1;
-}
-
-.delete {
-    border: 3px solid #df0000;
-    width: 80px;
-    height: 40px;
-    border-radius: 50px;
-    transition: ease-out 0.3s;
-    font-size: 2rem;
-    outline: none;
-    position: relative;
-    z-index: 1;
-}
-
-.delete:hover {
-    background-color: white;
-}
-
-.delete:before {
-    transition: 0.5s all ease;
+    transition: all 0.2s;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(241, 240, 240);
     position: absolute;
-    top: 0;
-    left: 50%;
-    right: 50%;
     bottom: 0;
-    opacity: 0;
-    content: "";
-    background-color: #f94242;
-    border-radius: 5px;
+    left: 0;
 }
 
-.delete:hover:before {
-    transition: 0.5s all ease;
-    left: 0;
-    right: 0;
+.nav-link:hover::after{
     opacity: 1;
-    z-index: -1;
-}  */
+    
+}

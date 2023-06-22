@@ -36,9 +36,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           {% if user.is_authenticated and user.id == 1 or user.id == 2 %}
             <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
+              </li> {% endcomment %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-post' %}">Add post</a>
               </li>
@@ -96,9 +96,9 @@
             </ul>
           {% else %}
             <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
-              </li>
+              </li> {% endcomment %}
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
