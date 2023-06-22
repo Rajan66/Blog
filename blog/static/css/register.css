@@ -14,6 +14,8 @@
     font-size: 40px;
     font-weight: 500;
     position: relative;
+    left: 35px;
+    
 }
 
 .container .title::before{
@@ -26,7 +28,53 @@
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-/* .btn1{
+.container h1{
+    border-bottom: 1px solid silver;    
+}
+
+.container form{
+    padding: 0 40px;
+}
+
+table .text{
+    border-bottom: 2px solid #adadad;
+}
+
+.text .input{
+    width: 100%;
+    padding: 0 100px;
+    height: 40px;
+    border: none;
+    background: none;
+    /* outline: none; */
+    outline: 0;
+}
+
+.input{
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width:260px;
+}
+
+input:focus {
+    border: transparent;
+    outline: none;
+}
+
+.text .label{
+    position: absolute;
+    color: #939090;
+    transform: translateY(25%);
+    pointer-events: none;
+    transition: .5s;
+}
+
+.form:focus{
+    outline: 0;
+}
+
+.text input:valid ~ label{
+    top: -5px;
     color: #71b7e6;
-    background-color: linear-gradient(135deg, #71b7e6, #9b59b6);;
-} */
+}
