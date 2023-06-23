@@ -14,6 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # on_delete -  deletes all the posts when the user account is deleted
     body = RichTextField(blank=True,null=True)
+    snippet = models.CharField(max_length=255)
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
     # user can like many posts and a post can have many likes

@@ -15,7 +15,7 @@
                             <!-- Span with tag class for the tag -->
                             <span class="tag">{{ post.category|title }}</span>
                             <div class="name">{{ post.title }}</div>
-                            {% comment %} <p>{{ post.body|slice:":200"|safe }}</p> {% endcomment %}
+                            <p>{{ post.snippet }}</p>
                             <a class="btn btn-primary button"
                                href="{% url 'article-details' post.pk %}">Read more</a>
                             <br>

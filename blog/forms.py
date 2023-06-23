@@ -14,7 +14,7 @@ for item in categories:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'author', 'category', 'body')
+        fields = ('title', 'title_tag', 'author', 'category', 'body','snippet')
 
         widgets = {
             # placeholder = categories: add to the attrs; to show the querySet and list of the categories
@@ -23,13 +23,14 @@ class PostForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'user','type': 'hidden'}),
             'category': forms.Select(choices=categories_list, attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'category', 'body')
+        fields = ('title', 'title_tag', 'category', 'body','snippet')
 
         widgets = {
             # placeholder = categories: add to the attrs; to show the querySet and list of the categories
@@ -37,5 +38,6 @@ class EditForm(forms.ModelForm):
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=categories_list, attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
