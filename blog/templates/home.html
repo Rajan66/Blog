@@ -1,48 +1,87 @@
 {% extends "base.html" %}
 {% block content %}
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
-{% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
-<h2>Blog posts</h2>
-<ul>
-    {% for post in object_list %}
-    <li>
-        <div id="container">
-            <!-- A div with card class for the card  -->
-            <div class="card">
-                <img src="{% static 'img/denja_catto.jpg' %}" alt="Catoo">
-                <!-- A div with card__details class to hold the details in the card  -->
-                <div class="card__details">
-                    <!-- Span with tag class for the tag -->
-                    <span class="tag">{{ post.category|title }}</span>
-                    <!-- A div with name class for the name of the card -->
-                    <div class="name">{{ post.title }}</div>
-                    <p>{{ post.body|slice:":200" }}</p>
-                    {% comment %} <button>
-                        <a href=" {% url 'article-details' post.pk %} ">Read more</a>
-                    </button>  {% endcomment %}
-                    <a class="btn btn-primary button" href="{% url 'article-details' post.pk %}">Read more</a>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
+    <h2>Blog posts</h2>
+    <ul>
+        {% for post in object_list %}
+            <li>
+                <div id="container">
+                    <!-- A div with card class for the card  -->
+                    <div class="card">
+                        <img src="{% static 'img/denja_catto.jpg' %}" alt="Catoo">
+                        <div class="card__details">
+                            <!-- Span with tag class for the tag -->
+                            <span class="tag">{{ post.category|title }}</span>
+                            <div class="name">{{ post.title }}</div>
+                            <p>{{ post.body|slice:":200" }}</p>
+                            <a class="btn btn-primary button"
+                               href="{% url 'article-details' post.pk %}">Read more</a>
+                            <br>
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'like' post.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <span id="like_count">{{ post.like_count }}</span>
+                                    <button type="submit"
+                                            onsubmit="return false"
+                                            {% comment %}
+                                            id="like-button"
+                                            {% endcomment %}
+                                            name="post_id"
+                                            value="{{ post.id }}"
+                                            class="btn btn-primary btn-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="16"
+                                             height="16"
+                                             fill="currentColor"
+                                             class="bi bi-heart"
+                                             viewBox="0 0 16 16">
+                                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            {% else %}
+                                <span id="like_count">{{ post.like_count }}</span>
+                                <a href="{% url 'register' %}"
+                                   value="{{ post.id }}"
+                                   class="btn btn-primary btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="16"
+                                         height="16"
+                                         fill="currentColor"
+                                         class="bi bi-heart"
+                                         viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </li>
-    <br/>
-    <hr>
-    {% endfor %}
-</ul>
+            </li>
+            <br />
+            <hr>
+        {% endfor %}
+    </ul>
+    {% comment %} <script>
+        $('#myForm').trigger("reset"); 
+        $(document).on('click', '#like-button', function (e) {
+        e.preventDefault();
+        $.ajax({
+                type: 'POST',
+                url: '{% url "like" post.pk %}',
+                data: {
+                    postid: $('#like-button').val(),
+                    action: 'post'
+                },
+                success: function (json) {
+                document.getElementById("like_count").innerHTML = json['result']  
+                },
+                error: function (xhr, errmsg, err) {
+        
+                }
+            });
+        })
+    </script> {% endcomment %}
 {% endblock content %}
-{% comment %} <li>
-    <a>{{ post.title }}</a>
-    The slugify filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens
-    (-).
-    - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
-    - {{ post.author.first_name }} {{ post.author.last_name }}
-    - {{ post.post_date }}
-    {% if user.is_authenticated and post.author.id == user.id %}
-    - <small><a href="{% url 'edit-post' post.pk %}">Edit</a></small>
-    - <small><a href="{% url 'delete-post' post.pk %}">Delete</a></small>
-    {% endif %}
-    <br>
-    {{ post.body|slice:":100" }}
-</li> {% endcomment %}

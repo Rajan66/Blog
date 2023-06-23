@@ -16,6 +16,10 @@ class Post(models.Model):
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
+    # user can like many posts and a post can have many likes
+    likes = models.ManyToManyField(User, related_name='like')
+    like_count =models.BigIntegerField(default=0)
+    # related name :- fk that associates the many things to each other 
 
     def __str__(self):
         # To view the title and author of the post in the admin area
