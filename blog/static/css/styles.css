@@ -4,38 +4,38 @@
     background-color: #e3edf1;
 }
 
-.btn{
+.btn {
     border-radius: 0;
     margin-right: 10px;
 }
 
-.btn-1{
+.btn-1 {
     width: 100px;
 }
 
-.btn-1:hover{
+.btn-1:hover {
     transform: translateY(-5px);
     font-weight: bold;
 }
 
-.btn-2{
+.btn-2 {
     transition: .4s all;
     width: 100px;
 }
 
-.btn-2:hover{
+.btn-2:hover {
     /* transform: scale(1.2); */
     font-weight: bold;
     border-radius: 5px;
     transform: translateY(-5px);
 }
 
-.whitebar{
+.whitebar {
     transition: all 0.2s;
     position: relative;
 }
 
-.whitebar::after{
+.whitebar::after {
     content: '';
     opacity: 0;
     transition: all 0.2s;
@@ -47,7 +47,7 @@
     left: 0;
 }
 
-.whitebar:hover::after{
+.whitebar:hover::after {
     opacity: 1;
-    
+
 }

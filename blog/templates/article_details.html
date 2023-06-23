@@ -8,9 +8,8 @@
     <small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.author.email }} - {{ post.post_date }} </small>
     <br>
     <hr>
-    {{ post.body }}
-    <br>
-    <br>
+    {{ post.body|safe }}
+    <hr>
     {% if user.is_authenticated %}
         <form action="{% url 'like' post.pk %}" method="post">
             {% csrf_token %}
