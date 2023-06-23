@@ -105,6 +105,12 @@ def CategoryView(request, cat):
     return render(request, 'categories.html', context)
 
 
+def CategoryListView(request):
+    category_list = Category.objects.all()
+    context = {'category_list': category_list}
+    return render(request, 'category_list.html', context)
+
+
 # get this object or return a 404 error if it doesn't exist
 # after we press like we get the post's id then we pass that into this
 # this says to look that post's id in the blog_post table
@@ -122,4 +128,4 @@ def LikeView(request, pk):
         post.like_count += 1
         result = post.like_count
         post.save()
-    return HttpResponseRedirect(reverse('article-details',args=[str(pk)]))
+    return HttpResponseRedirect(reverse('article-details', args=[str(pk)]))
