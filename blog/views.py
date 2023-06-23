@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post, Category, User
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy, reverse
-
+from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -122,4 +122,4 @@ def LikeView(request, pk):
         post.like_count += 1
         result = post.like_count
         post.save()
-    return redirect('home')
+    return HttpResponseRedirect(reverse('article-details',args=[str(pk)]))
