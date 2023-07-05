@@ -23,7 +23,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 3px;
+    height: 2px;
     width: 45px;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
@@ -58,8 +58,9 @@ table .text{
 }
 
 input:focus {
-    border: transparent;
-    outline: none;
+    border-color: transparent;
+    outline: 0px solid transparent;
+    
 }
 
 .text .label{
