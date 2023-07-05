@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+    Edit Profile
+{% endblock title %}
+{% block content %}
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endcomment %}
+    <h1>Edit Profile</h1>
+    <br>
+
+    <div class="form-group">
+        <form method="post">
+            {% csrf_token %}
+
+            <table>
+                <tr class="text">
+                  
+                    <td class="label">{{ form.first_name.label }}</td>
+                    <td class="input">{{ form.first_name }}</td>
+                </tr>
+                <tr class="text">
+                    <td class="label">{{ form.last_name.label }}</td>
+                    <td class="input">{{ form.last_name }}</td>
+                </tr>
+                <tr class="text">
+                   
+                    <td class="label">{{ form.username.label }}</td>
+                    <td class="input">{{ form.username }}</td>
+                </tr>
+                <tr class="text">
+                    <td class="label">Email</td>
+                    <td class="input">{{ form.email }}</td>
+                </tr>
+            </table>
+            <br>
+            <button type="submit" class="btn btn-outline-info shadow">Update</button>
+            <a href="{% url 'password' %}" class="btn btn-info">Change Passwod</a>
+        </form>
+    </div>
+{% endblock content %}

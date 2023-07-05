@@ -10,6 +10,7 @@ Edit Post
         <form method="post">
             <div class="form-group">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-outline-info shadow">Update</button>
             </div>
