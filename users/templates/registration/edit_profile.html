@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+    Edit Profile
+{% endblock title %}
+{% block content %}
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endcomment %}
+    <h1>Edit Profile</h1>
+    <br>
+    <div class="form-group">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-info">Update</button>
+        </form>
+    </div>
+{% endblock content %}
