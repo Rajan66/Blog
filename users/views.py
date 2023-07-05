@@ -1,24 +1,19 @@
-from typing import Any, Optional
-from django.db import models
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from .forms import CreateUserForm,EditProfileForm
+from .forms import CreateUserForm,EditProfileForm,ChangePasswordForm
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import generic
-
-# Create your views here.
 
 
 # class UserRegisterView(generic.CreateView):
 #     form_class = UserCreationForm
 #     template_name = 'registration/register.html'
 #     success_url = reverse_lazy('login')
+
 @csrf_exempt
 def registerPage(request):
     form = CreateUserForm()
-
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -34,7 +29,6 @@ def loginPage(request):
     return render(request, 'registration/login.html', context)
 
 
-
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
     template_name = 'registration/edit_profile.html'
@@ -46,11 +40,10 @@ class UserEditView(generic.UpdateView):
     
     
 class PasswordView(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = ChangePasswordForm
     template_name = 'registration/change_password.html'
     success_url = reverse_lazy('password-success')
     
-    # this function gets all the info of the user to the edit form page
     
 def password_success(request):
     context = {}

@@ -14,7 +14,7 @@ for item in categories:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'author', 'category', 'body','snippet')
+        fields = ('title', 'title_tag','author', 'category', 'body','snippet','header_image')
 
         widgets = {
             # placeholder = categories: add to the attrs; to show the querySet and list of the categories
@@ -30,7 +30,7 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'category', 'body','snippet')
+        fields = ('title', 'title_tag', 'category', 'body','snippet','header_image')
 
         widgets = {
             # placeholder = categories: add to the attrs; to show the querySet and list of the categories
@@ -38,6 +38,6 @@ class EditForm(forms.ModelForm):
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=categories_list, attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'})
         }
 
