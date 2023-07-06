@@ -1,48 +1,57 @@
-.main{
-    overflow: hidden;
+.main1{
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
     align-items: center;
     justify-content: center;
-    background: rgb(130, 106, 251);
 }
 
-.container{
+.container1{
     position: relative;
     max-width: 600px;
     width: 100%;
     background: #fff;
     padding: 25px 30px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.container .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 45px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 .container h1{
     padding: 0 0 10px 0;
-    font-size: 40px;
+    text-align: center;
+    font-size: 30px;
+    color: #333;
     font-weight: 500;
-    position: relative;
-    left: 35px;
     border-bottom: 1px solid silver; 
 }
 
-.container form{
-    padding: 0 40px;
-    box-sizing: border-box;
+.container1 .form-group{
+    margin-top: 10px;
+    /* padding: 0  40px;
+    box-sizing: border-box; */
 }
 
-form .text{
+.form-group .text{
     position: relative;
     border-bottom: 1px solid #adadad;
-    margin: 30px 0;
+    margin: 5px 0;
+}
+
+.form-group button{
+    height: 45px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    background-color: rgb(130, 106, 251);
+}
+
+.form-group button:hover{
+    background-color: rgb(88, 56, 250);
 }
 
 .text .input{
@@ -50,9 +59,7 @@ form .text{
     padding: 0 5px;
     height: 40px;
     font-size: 16px;
-    /* border: 1px solid purple; */
     border: none;
-    /* border-radius: 200%; */
     background: none;
     outline: none;
     /* outline: 0; */
@@ -75,7 +82,7 @@ input:focus {
     position: absolute;
     top: 50%;
     left: 10px;
-    color: green;
+    color: #333;
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
@@ -93,7 +100,7 @@ input:focus {
     transition: .5s;
 }
 
-.form:focus{
+.form-group:focus{
     outline: 0;
 }
 

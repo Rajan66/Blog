@@ -1,18 +1,18 @@
 .main1{
-    margin-top: 12%;
+    margin-top: 5%;
     margin-left: 20%;
-    margin-right: 20%;
+    /* margin-right: 20%; */
     align-items: center;
     justify-content: center;
 }
 
 .container1{
     position: relative;
-    max-width: 70   0px;
+    max-width: 65%;
     width: 100%;
     background: #fff;
     padding: 25px;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,37 +25,44 @@
     border-bottom: 1px solid silver; 
 }
 
-.container1 .form{
+.container1 .form-group{
     margin-top: 30px;
 }
 
-.form .input{
+.form-group .input{
+    position: relative;
+    border-bottom: 1px solid #adadad;
+    margin: 5px 0;
     width: 100%;
     margin-top: 20px;
 }
 
 .input label{
     color: #333;
+    pointer-events: none;
 }
 
-.form .input input{
+.form-group .input input{
     position: relative;
-    height: 50px;
+    height: 40px;
     width: 100%;
     outline: none;
-    font-size: 1rem;
+    font-size: 16px;
+    border: none;
+    background: none;
     color: #707070;
     margin-top: 8px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 6px;
-    padding: 0 15px;
+    padding: 0 5px;
+    
 }
 
 .input input:focus{
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.form button{
+.form-group button{
     height: 55px;
     width: 100%;
     color: #fff;
@@ -69,6 +76,6 @@
     background-color: rgb(130, 106, 251);
 }
 
-.form button:hover{
+.form-group button:hover{
     background-color: rgb(88, 56, 250);
 }
