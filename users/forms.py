@@ -10,6 +10,13 @@ from blog.models import Profile
 # also sets the fields in the form that we use in the html template
 
 class CreateUserForm(UserCreationForm):
+    first_name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
+    last_name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
+    username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','type':'password'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','type':'password'}))
+    
     class Meta:
         model = get_user_model()
         fields = ["first_name", "last_name", "email",

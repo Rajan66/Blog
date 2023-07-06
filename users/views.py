@@ -21,6 +21,8 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             return redirect('login')
+        else:
+            print('Error 404')
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)

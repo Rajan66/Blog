@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 {% block title %}
-Login
+    Login
 {% endblock title %}
 {% block content %}
-{% load static %}
-<div class="main1">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <div class="container1">
-        <h1>Log in</h1>
-        <div class="form-group">
-            <form method="post">
-                {% csrf_token %}
-                <div class="input">
-                    <label>Username</label>
-                    <input type="text" name="username"> 
+    {% load static %}
+    <div class="main1">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <div class="container1">
+            <h1>Log in</h1>
+            <div class="form-group">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="input">
+                        <label>Username</label>
+                        <input type="text" name="username">
+                    </div>
+                    <div class="input">
+                        <label>Password</label>
+                        <input type="Password" name="password">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-info">Log in</button>
                 </div>
-                <div class="input">
-                    <label>Password</label>
-                    <input type="Password" name="password">
-                </div><br>
-                <button type="submit" class="btn btn-info ">Log in</button>
-
+            </form>
         </div>
-        </form>
     </div>
-</div>
 {% endblock content %}
