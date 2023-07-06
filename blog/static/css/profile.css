@@ -24,11 +24,6 @@ ul a {
   list-style-type: none;
 }
 
-.header__wrapper header {
-  width: 100%;
-  background: url("../img/bg.jpeg") no-repeat 50% 20% / cover;
-  min-height: calc(100px + 15vw);
-}
 
 .header__wrapper .cols__container .left__col {
   padding: 25px 20px;
@@ -73,30 +68,7 @@ ul a {
   color: #818181;
   margin: 0;
 }
-.header__wrapper .cols__container .left__col .about {
-  justify-content: space-between;
-  position: relative;
-  margin: 35px 0;
-}
-.header__wrapper .cols__container .left__col .about li {
-  display: flex;
-  flex-direction: column;
-  color: #818181;
-  font-size: 0.9rem;
-}
-.header__wrapper .cols__container .left__col .about li span {
-  color: #1d1d1d;
-  font-weight: 600;
-}
-.header__wrapper .cols__container .left__col .about:after {
-  position: absolute;
-  content: "";
-  bottom: -16px;
-  display: block;
-  background: #cccccc;
-  height: 1px;
-  width: 100%;
-}
+
 .header__wrapper .cols__container .content p {
   font-size: 1rem;
   color: #1d1d1d;
@@ -114,49 +86,7 @@ ul a {
 .header__wrapper .cols__container .content ul i {
   font-size: 1.3rem;
 }
-.header__wrapper .cols__container .right__col nav {
-  display: flex;
-  align-items: center;
-  padding: 30px 0;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.header__wrapper .cols__container .right__col nav ul {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-}
-.header__wrapper .cols__container .right__col nav ul li a {
-  text-transform: uppercase;
-  color: #818181;
-}
-.header__wrapper .cols__container .right__col nav ul li:nth-child(1) a {
-  color: #1d1d1d;
-  font-weight: 600;
-}
-.header__wrapper .cols__container .right__col nav button {
-  background: #0091ff;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-.header__wrapper .cols__container .right__col nav button:hover {
-  opacity: 0.8;
-}
-.header__wrapper .cols__container .right__col .photos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 20px;
-}
-.header__wrapper .cols__container .right__col .photos img {
-  max-width: 100%;
-  display: block;
-  height: 100%;
-  object-fit: cover;
-}
+
 
 /* Responsiveness */
 

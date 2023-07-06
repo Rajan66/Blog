@@ -1,14 +1,29 @@
-
 {% extends "base.html" %}
 {% block title %}
     Categories
 {% endblock title %}
 {% block content %}
-    <h1>Blog Categories</h1>
-    {% for item in category_list %}
-        <li>
-           <h3> <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a></h3>
-        </li>
-    {% endfor %}
-    <a href="{% url 'home' %}" class="btn btn-info">Back</a>
+    {% load static %}
+    <div class="row">
+        {% for item in category_list %}
+            <div class="col-lg-4">
+                {% if item.category_pic %}
+                    <img class="thumbnail"
+                         src="{{ item.category_pic.url }}"
+                         alt="Cateogry Pic">
+                {% else %}
+                    <img class="thumbnail"
+                         src="{% static 'img/unknown.png' %}"
+                         alt="Cateogry Pic">
+                {% endif %}
+                <a href="{% url 'category' item|slugify %}">
+                    <div class="box-element product">
+                        <h6>
+                            <strong>{{ item.name }}</strong>
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

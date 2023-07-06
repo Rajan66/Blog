@@ -47,7 +47,7 @@ class EditForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'md-textarea form-control',
-        'placeholder': 'comment here...',
+        'placeholder': 'Write a comment...',
         'rows': '4',
     }))
 

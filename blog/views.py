@@ -42,6 +42,7 @@ class ArticleDetailView(DetailView):
             return redirect(reverse("article-details", args=[str(pk)]))
 
     def get_context_data(self, *args, **kwargs):
+
         post_comments = Comment.objects.all().filter(post=self.object.id)
         category_menu = Category.objects.all()
         context = super(ArticleDetailView, self).get_context_data(
@@ -73,7 +74,7 @@ class AddCategoryView(CreateView):
     # CreateView to create a new blog post
     model = Category
     template_name = 'add_category.html'
-    fields = ['name']
+    fields = ['name','category_pic']
 
     def get_context_data(self, *args, **kwargs):
         category_menu = Category.objects.all()

@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+
+from blog.views import HomeView
 from .forms import CreateUserForm, EditProfileForm, ChangePasswordForm, CreateProfileForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.views import PasswordChangeView
 
 from django.views.generic import DetailView, UpdateView, CreateView
-from blog.models import Profile
+from blog.models import Category, Profile
 
 
 # class UserRegisterView(generic.CreateView):

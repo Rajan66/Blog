@@ -40,6 +40,8 @@ class Post(models.Model):
 # A new model for the category so that we can add, edit and remove categories
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    category_pic = models.ImageField(
+        null=True, blank=True, upload_to='images/category')
 
     def __str__(self):
         return self.name

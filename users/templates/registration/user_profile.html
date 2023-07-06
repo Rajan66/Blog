@@ -1,73 +1,101 @@
 {% extends "base.html" %}
 {% block content %}
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <h1>User Profile</h1>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    <link rel="stylesheet" href="css/profile.css" />
-  </head>
-  <body>
-    <div class="header__wrapper">
-      <header></header>
-      <div class="cols__container">
-        <div class="left__col">
-          <div class="img__container">
-            {% if page_user.profile_pic %}
-        <img src="{{ page_user.profile_pic.url }}"
-             alt=""
-             height="75px"
-             width="125px"
-             class="rounded-circle">
-    {% else %}
-        <img src="{% static 'img/unknown.png' %}"
-             alt=""
-             height="75px"
-             width="125px"
-             class="rounded-circle">
-    {% endif %}
-            <span></span>
-          </div>
-          <br>
-          <div class="detail">
-            {{ page_user.user.username}} <button type="submit" class="btn btn-info btn-sm">Follow</button><br>
-          {{ page_user.user.first_name}}
-          {{ page_user.user.last_name}} <br>
-          
-          {{ page_user.user.email}}
-          </div>
-          
+    <div class="header_wrapper">
+        <header>
+        </header>
+        <div class="cols__container">
+            <div class="left__col">
+                    {% if page_user.profile_pic %}
+                        <img src="{{ page_user.profile_pic.url }}"
+                             alt=""
+                             height="75px"
+                             width="125px"
+                             class="rounded-circle">
+                    {% else %}
+                        <img src="{% static 'img/unknown.png' %}"
+                             alt=""
+                             height="75px"
+                             width="125px"
+                             class="rounded-circle">
+                    {% endif %}
+                    <span></span>
+                </div>
+                <br>
+                <div class="detail">
+                    {{ page_user.user.username }}
+                    <button type="submit" class="btn btn-info btn-sm">Follow</button>
+                    <br>
+                    {{ page_user.user.first_name }}
+                    {{ page_user.user.last_name }}
+                    <br>
+                    {{ page_user.user.email }}
+                </div>
+                <div class="content">
+                    <br>
+                    <p>{{ page_user.bio }}</p>
+                    <ul>
+                        {% if page_user.facebook_url %}<a class="fab fa-facebook" href="{{ page_user.facebook_url }}"></a>{% endif %}
+                        {% if page_user.instagram_url %}<a class="fab fa-instagram" href="{{ page_user.instagram_url }}"></a>{% endif %}
+                        {% if page_user.twitter_url %}<a class="fab fa-twitter" href="{{ page_user.twitter_url }}"></a>{% endif %}
+                    </ul>
+                </div>
+            </div>
 
-          <div class="content"><br>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam
-              erat volutpat. Morbi imperdiet, mauris ac auctor dictum, nisl
-              ligula egestas nulla.
-            </p>
-
-            <ul>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-pinterest"></i>
-              <i class="fab fa-facebook"></i>
-              <i class="fab fa-dribbble"></i>
-            </ul>
-          </div>
         </div>
-        <div class="right__col">
-          <nav>
-            <ul  class="list">
-              <li><a href="">blogs</a></li>
-              {% comment %} <li><a href="">about</a></li> {% endcomment %}
-            </ul>
-            
-          </nav>
+    </div>
+{% endblock content %}
+{% comment %} <div class="header__wrapper">
+    <header></header>
+    <div class="cols__container">
+      <div class="left__col">
+        <div class="img__container">
+          <img src="img/user.jpeg" alt="Anna Smith" />
+          <span></span>
+        </div>
+        <h2>Anna Smith</h2>
+        <p>UX/UI Designer</p>
+        <p>anna@example.com</p>
 
-          <div class="blogs">
-            <img src="img/img_1.avif" alt="Photo" />
-          </div>
+        <ul class="about">
+          <li><span>4,073</span>Followers</li>
+          <li><span>322</span>Following</li>
+          <li><span>200,543</span>Attraction</li>
+        </ul>
+
+        <div class="content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam
+            erat volutpat. Morbi imperdiet, mauris ac auctor dictum, nisl
+            ligula egestas nulla.
+          </p>
+
+          <ul>
+            <li><i class="fab fa-twitter"></i></li>
+            <i class="fab fa-pinterest"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-dribbble"></i>
+          </ul>
         </div>
       </div>
+      <div class="right__col">
+        <nav>
+          <ul>
+            <li><a href="">Posts</a></li>
+            <li><a href="">galleries</a></li>
+            <li><a href="">groups</a></li>
+            <li><a href="">about</a></li>
+          </ul>
+          <button>Follow</button>
+        </nav>
+
+        <div class="photos">
+         {% comment %} post {% endcomment %}
+        {% comment %} </div>
+      </div>
     </div>
-  </body>
-</html>
-{% endblock content %}
+  </div> {% endcomment %} 
