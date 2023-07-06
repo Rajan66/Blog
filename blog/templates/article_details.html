@@ -5,33 +5,10 @@
 {% block content %}
     {% load static %}
     <h1>{{ post.title }}</h1>
-    {% if post.author.profile.profile_pic %}
-        <img src="{{ post.author.profile.profile_pic.url }}"
-             alt=""
-             height="75px"
-             width="125px"
-             class="rounded-circle">
-    {% else %}
-        <img src="{% static 'img/unknown.png' %}"
-             alt=""
-             height="75px"
-             width="125px"
-             class="rounded-circle">
-    {% endif %}
-    <small>By:<a href="{% url 'show-profile' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} </small>
-    {% if post.header_image %}
-        <img src="{{ post.header_image.url }}"
-             alt="Catoo"
-             height="40%"
-             width="100%">
-    {% endif %}
-    <br>
-    <hr>
-    {{ post.body|safe }}
-    <hr>
     {% if user.is_authenticated %}
         <form action="{% url 'like' post.pk %}" method="post">
             {% csrf_token %}
+            By:<a href="{% url 'show-profile' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} 
             <span id="like_count">{{ post.like_count }}</span>
             <button type="submit"
                     id="like_button"
@@ -49,6 +26,7 @@
             </button>
         </form>
     {% else %}
+    By:<a href="{% url 'show-profile' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} 
         <span id="like_count">{{ post.like_count }}</span>
         <a href="{% url 'register' %}"
            value="{{ post.id }}"
@@ -63,6 +41,19 @@
             </svg>
         </a>
     {% endif %}
+    
+    <br>
+    {% if post.header_image %}
+        <img src="{{ post.header_image.url }}"
+             alt="Catoo"
+             height="10%"
+             width="100%">
+    {% endif %}
+    <br>
+    <hr>
+    {{ post.body|safe }}
+    <hr>
+    
     <br>
     {% if user.is_authenticated and post.author.id == user.id %}
         <small><a href="{% url 'edit-post' post.pk %}"
@@ -70,8 +61,7 @@
         <small><a href="{% url 'delete-post' post.pk %}"
    class="btn btn-outline-danger shadow btn-2">Delete</a></small> &nbsp;
     {% endif %}
-    <a href="{% url 'home' %}" class="btn btn-info">Back</a>
-    <hr>
+
     <br>
     <div class="section">
         <div class="container1">
