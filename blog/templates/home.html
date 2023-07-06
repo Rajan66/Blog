@@ -2,8 +2,6 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    {% if user.is_authenticated %}<h1>Welcome back, {{ user.username }}😇</h1>{% endif %}
-    <h2>Blog posts</h2>
     <ul>
         {% for post in object_list %}
             <li>

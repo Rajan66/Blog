@@ -13,16 +13,17 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # null = true ra blank = true gives us an option to not put an image
-    header_image = models.ImageField(null=True,blank=True,upload_to='images/')
+    header_image = models.ImageField(
+        null=True, blank=True, upload_to='images/')
     # on_delete -  deletes all the posts when the user account is deleted
-    body = RichTextField(blank=True,null=True)
+    body = RichTextField(blank=True, null=True)
     snippet = models.CharField(max_length=255)
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='uncategorized')
     # user can like many posts and a post can have many likes
     likes = models.ManyToManyField(User, related_name='like')
-    like_count =models.BigIntegerField(default=0)
-    # related name :- fk that associates the many things to each other 
+    like_count = models.BigIntegerField(default=0)
+    # related name :- fk that associates the many things to each other
 
     def __str__(self):
         # To view the title and author of the post in the admin area
@@ -48,15 +49,27 @@ class Category(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
-    profile_pic = models.ImageField(null=True,blank=True,upload_to='images/profile')
-    facebook_url = models.CharField(max_length=225,null=True,blank=True)
-    instagram_url = models.CharField(max_length=225,null=True,blank=True)
-    twitter_url = models.CharField(max_length=225,null=True,blank=True)
-    
+    profile_pic = models.ImageField(
+        null=True, blank=True, upload_to='images/profile')
+    facebook_url = models.CharField(max_length=225, null=True, blank=True)
+    instagram_url = models.CharField(max_length=225, null=True, blank=True)
+    twitter_url = models.CharField(max_length=225, null=True, blank=True)
+
     def __str__(self):
-        return str(self.user) 
-    
+        return str(self.user)
+
     def get_absolute_url(self):
         return reverse("home")
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, related_name='comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.post.title, self.user.first_name)

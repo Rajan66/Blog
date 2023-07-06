@@ -6,14 +6,19 @@
     {% load static %}
     <h1>{{ post.title }}</h1>
     {% if post.author.profile.profile_pic %}
-        <img src="{{ post.author.profile.profile_pic.url }}" alt="" height="75px" width="125px" class="rounded-circle">
+        <img src="{{ post.author.profile.profile_pic.url }}"
+             alt=""
+             height="75px"
+             width="125px"
+             class="rounded-circle">
     {% else %}
-        <img src="{% static 'img/unknown.png' %}" alt="" height="75px" width="125px" class="rounded-circle">
+        <img src="{% static 'img/unknown.png' %}"
+             alt=""
+             height="75px"
+             width="125px"
+             class="rounded-circle">
     {% endif %}
-    
     <small>By:<a href="{% url 'show-profile' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} </small>
-    
-   
     {% if post.header_image %}
         <img src="{{ post.header_image.url }}"
              alt="Catoo"
@@ -66,4 +71,38 @@
    class="btn btn-outline-danger shadow btn-2">Delete</a></small> &nbsp;
     {% endif %}
     <a href="{% url 'home' %}" class="btn btn-info">Back</a>
+    <hr>
+    <br>
+    <div class="section">
+        <div class="container1">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="media-list">
+                        {% for comment in post_comments %}
+                            <div>
+                                <img class="avatar avatar-sm mr-4" src="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <div class="small-1">
+                                    <b>{{ comment.user }}</b>
+                                    {{ comment.date }}
+                                </div>
+                                <p>{{ comment.content }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <form method="POST" action="{% url 'article-details' post.pk %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form }}
+                        </div>
+                        <button type="submit" class="btn btn-info">Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
 {% endblock content %}

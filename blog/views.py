@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category, User
-from .forms import PostForm, EditForm
+from .models import Post, Category, User, Comment
+from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -29,12 +29,31 @@ class ArticleDetailView(DetailView):
     # DetailView to view a single blog post
     model = Post
     template_name = 'article_details.html'
+    form = CommentForm
+
+    def post(self, request, pk, *args, **kwargs):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            post = self.get_object()
+            form.instance.user = request.user
+            form.instance.post = post
+            form.save()
+
+            return redirect(reverse("article-details", args=[str(pk)]))
 
     def get_context_data(self, *args, **kwargs):
+        post_comments = Comment.objects.all().filter(post=self.object.id)
         category_menu = Category.objects.all()
         context = super(ArticleDetailView, self).get_context_data(
             *args, **kwargs)
-        context['category_menu'] = category_menu
+
+        # context['category_menu'] = category_menu
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'form': self.form,
+            'post_comments': post_comments,
+            'category_menu': category_menu,
+        })
 
         return context
 

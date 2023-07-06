@@ -57,24 +57,29 @@
                    role="button"
                    data-toggle="dropdown"
                    aria-expanded="false"
-                   aria-haspopup="true">Profile</a>
+                   aria-haspopup="true">{{ user }}</a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Info</a>
-                  </li>
                   {% if user.profile.id %}
+                    <li>
+                      <a class="dropdown-item" href="{% url 'show-profile' user.profile.id %}">{{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
                     <li>
                       <a class="dropdown-item"
                          href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a>
                     </li>
-                    <li>
-                      <a href="{% url 'show-profile' user.profile.id %}" class="dropdown-item">View Profile</a>
-                    </li>
                   {% else %}
+                    <li>
+                      <a class="dropdown-item" href="#">{{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
                     <li>
                       <a class="dropdown-item" href="{% url 'create-profile-page' %}">Create Profile</a>
                     </li>
                   {% endif %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Info</a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -98,24 +103,29 @@
                    role="button"
                    data-toggle="dropdown"
                    aria-expanded="false"
-                   aria-haspopup="true">Profile</a>
+                   aria-haspopup="true">{{ user }}</a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Info</a>
-                  </li>
                   {% if user.profile.id %}
+                    <li>
+                      <a class="dropdown-item" href="{% url 'show-profile' user.profile.id %}">{{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
                     <li>
                       <a class="dropdown-item"
                          href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a>
                     </li>
-                    <li>
-                      <a href="{% url 'show-profile' user.profile.id %}" class="dropdown-item">View Profile</a>
-                    </li>
                   {% else %}
+                    <li>
+                      <a class="dropdown-item" href="#">{{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
                     <li>
                       <a class="dropdown-item" href="{% url 'create-profile-page' %}">Create Profile</a>
                     </li>
                   {% endif %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Info</a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">
