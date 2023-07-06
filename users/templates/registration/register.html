@@ -10,30 +10,35 @@
             <h1 class="title">Register</h1>
             <br>
             <div class="form-group">
-                <form method="post" class="form">
+                <form method="post">
                     {% csrf_token %}
-                         <div class="input">
+                         <div class="text">
                             <label>First Name</label>
-                            <input type="text" placeholder="enter first name" name="first_name"/>
+                            <span></span>
+                            <input type="text" class="input" placeholder="Enter your first name" name="first_name"/>
                         </div><br>
-                        <div class="input">
+                        <div class="text">
                             <label>Last Name</label>
-                            <input type="text" placeholder="enter last name" name="last_name"/>
+                            <span></span>
+                            <input type="text" class="input" placeholder="Enter your last name" name="last_name"/>
                         </div><br>
-                        <div class="input">
+                        <div class="text">
                             <label>Email</label>
-                            <input type="email" placeholder="Enter email" name="email"/>
+                            <span></span>
+                            <input type="email" class="input" placeholder="Enter your email" name="email"/>
                         </div><br>
-                        <div class="input">
+                        <div class="text">
                             <label>Password</label>
-                            <input type="password" placeholder="Enter password" name="password1"/>
+                            <span></span>
+                            <input type="password" class="input" placeholder="Enter your password" name="password1"/>
                         </div><br>
-                        <div class="input">
-                            <label>Re-type password</label>
-                            <input type="password" placeholder="Re-enter password" name="password2"/>
+                        <div class="text">
+                            <label>Confirm password</label>
+                            <span></span>
+                            <input type="password" class="input" placeholder="Re-enter the password" name="password2"/>
                         </div> 
                     <br>
-                    <button type="submit" class="btn btn-outline-info shadow" name="Create User">Register</button>
+                    <button type="submit" class="btn btn-info" name="Create User">Register</button>
                 </form>
             </div>
         </div>
