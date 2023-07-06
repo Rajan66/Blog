@@ -1,53 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <h1>User Profile</h1>
-    <div class="header_wrapper">
-        <header>
-        </header>
-        <div class="cols__container">
-            <div class="left__col">
-                    {% if page_user.profile_pic %}
-                        <img src="{{ page_user.profile_pic.url }}"
-                             alt=""
-                             height="75px"
-                             width="125px"
-                             class="rounded-circle">
-                    {% else %}
-                        <img src="{% static 'img/unknown.png' %}"
-                             alt=""
-                             height="75px"
-                             width="125px"
-                             class="rounded-circle">
-                    {% endif %}
-                    <span></span>
-                </div>
-                <br>
-                <div class="detail">
-                    {{ page_user.user.username }}
-                    <button type="submit" class="btn btn-info btn-sm">Follow</button>
-                    <br>
-                    {{ page_user.user.first_name }}
-                    {{ page_user.user.last_name }}
-                    <br>
-                    {{ page_user.user.email }}
-                </div>
-                <div class="content">
-                    <br>
-                    <p>{{ page_user.bio }}</p>
-                    <ul>
-                        {% if page_user.facebook_url %}<a class="fab fa-facebook" href="{{ page_user.facebook_url }}"></a>{% endif %}
-                        {% if page_user.instagram_url %}<a class="fab fa-instagram" href="{{ page_user.instagram_url }}"></a>{% endif %}
-                        {% if page_user.twitter_url %}<a class="fab fa-twitter" href="{{ page_user.twitter_url }}"></a>{% endif %}
-                    </ul>
-                </div>
-            </div>
-
-        </div>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  <div class="header_wrapper">
+    <header>
+    </header>
+    <div class="cols__container">
+      <div class="left__col">
+        {% if page_user.profile_pic %}
+          <img src="{{ page_user.profile_pic.url }}"
+               class="rounded-circle"
+               style="width: 500px"
+               alt="Avatar" />
+        {% else %}
+          <img src="{% static 'img/unknown.png' %}" alt="" class="profile_pic">
+        {% endif %}
+        <span></span>
+      </div>
+      <br>
+      <div class="detail">
+        <strong>Username:</strong> {{ page_user.user.username }}
+        <br>
+        <strong>Name:</strong> {{ page_user.user.first_name }} {{ page_user.user.last_name }}
+        <br>
+        <strong>Email:</strong> {{ page_user.user.email }}
+      </div>
+      <div class="content">
+        <br>
+        <strong>Bio:</strong> {{ page_user.bio }}
+        <br>
+        <ul>
+          {% if page_user.facebook_url %}
+            <li>
+              <a class="fab fa-facebook" href="{{ page_user.facebook_url }}">Facebook</a>
+            {% endif %}
+          </li>
+          {% if page_user.instagram_url %}
+            <li>
+              <a class="fab fa-instagram" href="{{ page_user.instagram_url }}">Instgram</a>
+            </li>
+          {% endif %}
+          {% if page_user.twitter_url %}
+            <li>
+              <a class="fab fa-twitter" href="{{ page_user.twitter_url }}">Twitter</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
 {% endblock content %}
 {% comment %} <div class="header__wrapper">
     <header></header>
@@ -94,8 +96,8 @@
         </nav>
 
         <div class="photos">
-         {% comment %} post {% endcomment %}
-        {% comment %} </div>
+{% comment %} post {% endcomment %}
+{% comment %} </div>
       </div>
     </div>
-  </div> {% endcomment %} 
+</div> {% endcomment %}

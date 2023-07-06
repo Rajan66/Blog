@@ -17,7 +17,6 @@ hr {
 #container{
     max-width: 600px;
     margin: 0 auto;
-
     margin-top: 5vh;
 }
 
@@ -38,7 +37,7 @@ ul{
     list-style: none;
 }
 
-img{
+.img-box{
     width: 100%;
     border-radius: 12px;
     height: 314px;
