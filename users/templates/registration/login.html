@@ -4,27 +4,25 @@ Login
 {% endblock title %}
 {% block content %}
 {% load static %}
-<div class="main">
+<div class="main1">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <div class="container">
+    <div class="container1">
         <h1>Log in</h1>
-        
         <div class="form-group">
-            <form method="post"class="form">
+            <form method="post" class="form">
                 {% csrf_token %}
                 <div class="input">
-                    <label>Username:</label>
-                    <input type="text">
+                    <label>Username</label>
+                    <input type="text" name="username"> 
                 </div>
                 <div class="input">
-                    <label>Password:</label>
-                    <input type="Password">
+                    <label>Password</label>
+                    <input type="Password" name="password">
                 </div><br>
                 <button type="submit" class="btn btn-info ">Log in</button>
 
         </div>
         </form>
-
     </div>
 </div>
 {% endblock content %}
