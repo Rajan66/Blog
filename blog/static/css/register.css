@@ -87,11 +87,29 @@ input:focus {
     transition: .5s;
 }
 
+.text span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+}
+
 .form:focus{
     outline: 0;
 }
 
+.text input:focus ~ label,
 .text input:valid ~ label{
     top: -5px;
     color: #71b7e6;
+}
+
+.text input:focus ~ span::before,
+.text input:valid ~ span::before{
+    width: 100%;
+
 }
