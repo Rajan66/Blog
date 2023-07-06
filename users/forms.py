@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from blog.models import Profile
 
 
 # To make fields of user registration form
@@ -35,3 +36,18 @@ class ChangePasswordForm(PasswordChangeForm):
     class Meta:
         model = get_user_model()
         fields = ["old_password","new_password1", "new_password2"]
+
+
+class CreateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["bio","profile_pic", "facebook_url", "instagram_url","twitter_url"]
+        widgets = {
+            'bio': forms.Textarea(attrs={'class':'form-control'}),
+            # 'profile_pic': forms.Textarea(attrs={'class':'form-control'}),
+            'facebook_url': forms.TextInput(attrs={'class':'form-control'}),
+            'instagram_url': forms.TextInput(attrs={'class':'form-control'}),
+            'twitter_url': forms.TextInput(attrs={'class':'form-control'}),
+        }
+  
+   

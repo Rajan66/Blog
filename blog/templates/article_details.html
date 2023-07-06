@@ -11,7 +11,7 @@
         <img src="{% static 'img/unknown.png' %}" alt="" height="75px" width="125px" class="rounded-circle">
     {% endif %}
     
-    <small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.author.email }} - {{ post.post_date }} </small>
+    <small>By:<a href="{% url 'show-profile' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} </small>
     
    
     {% if post.header_image.url %}

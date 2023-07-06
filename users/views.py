@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from .forms import CreateUserForm,EditProfileForm,ChangePasswordForm
+from .forms import CreateUserForm, EditProfileForm, ChangePasswordForm, CreateProfileForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.views import PasswordChangeView
-from django.views import generic
+
+from django.views.generic import DetailView, UpdateView, CreateView
+from blog.models import Profile
 
 
 # class UserRegisterView(generic.CreateView):
@@ -29,22 +31,56 @@ def loginPage(request):
     return render(request, 'registration/login.html', context)
 
 
-class UserEditView(generic.UpdateView):
+class UserEditView(UpdateView):
     form_class = EditProfileForm
     template_name = 'registration/edit_profile.html'
     success_url = reverse_lazy('home')
-    
+
     # this function gets all the info of the user to the edit form page
     def get_object(self):
         return self.request.user
-    
-    
+
+
 class PasswordView(PasswordChangeView):
     form_class = ChangePasswordForm
     template_name = 'registration/change_password.html'
     success_url = reverse_lazy('password-success')
-    
-    
+
+
 def password_success(request):
     context = {}
     return render(request, 'registration/password_success.html', context)
+
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'registration/user_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ShowProfilePageView,
+                        self).get_context_data(*args, **kwargs)
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        context['page_user'] = page_user
+        return context
+
+
+class EditProfilePageView(UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'facebook_url',
+              'instagram_url', 'twitter_url']
+
+    success_url = reverse_lazy('home')
+
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class = CreateProfileForm
+    template_name = 'registration/create_profile_page.html'
+
+    # send the user who accessed the page to the form
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    

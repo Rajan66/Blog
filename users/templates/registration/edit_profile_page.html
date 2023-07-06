@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    Edit Profile Page
+{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+        <h1>Edit Profile Page</h1>
+        <br>
+        <div class="form-group">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-info">Update Profile Page</button>
+            </form>
+        </div>
+        <script>
+            var name = "{{ user.id }}"
+
+            document.getElementById('user').value = name
+        </script>
+        {% else %}
+        <h2>You cannot access this page. <br> You are not {{ page_user.user.first_name }} </h2>
+    {% endif %}
+    {% else %}
+        <h2>Eh? This might not be the page you are looking for</h2>
+    {% endif %}
+{% endblock content %}

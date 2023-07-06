@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <h1>User Profile</h1>
+
+    {% if page_user.profile_pic %}
+        <img src="{{ page_user.profile_pic.url }}"
+             alt=""
+             height="75px"
+             width="125px"
+             class="rounded-circle">
+    {% else %}
+        <img src="{% static 'img/unknown.png' %}"
+             alt=""
+             height="75px"
+             width="125px"
+             class="rounded-circle">
+    {% endif %}
+    {{ page_user.user.first_name }}
+    {{ page_user.user.last_name }}
+    <br>
+    {% if page_user.facebook_url %}
+        <a href="{{ page_user.facebook_url }}">Facebook</a>
+    {% endif %} <br>
+    {{ page_user.bio }}
+{% endblock content %}
