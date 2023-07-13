@@ -9,11 +9,14 @@ from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import DetailView, UpdateView, CreateView
 from blog.models import Category, Profile
 
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 # class UserRegisterView(generic.CreateView):
 #     form_class = UserCreationForm
 #     template_name = 'registration/register.html'
 #     success_url = reverse_lazy('login')
+
 
 @csrf_exempt
 def registerPage(request):
@@ -22,6 +25,10 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            # cleaned_data: a dictionary which contains cleaned data only from the fields which have passed the validation tests.
+            # it will be only available after is_valid
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + user)
             return redirect('login')
         else:
             print('Error 404')
@@ -31,6 +38,14 @@ def registerPage(request):
 
 
 def loginPage(request):
+    if request.method == "post":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            redirect('home')
     context = {}
     return render(request, 'registration/login.html', context)
 
@@ -86,5 +101,3 @@ class CreateProfilePageView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
-    
