@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'blog',
     'users',
     'ckeditor',
-    'customadmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
