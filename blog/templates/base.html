@@ -48,9 +48,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-category' %}">Add category</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add-category' %}">Add category</a>
-              </li>
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
@@ -68,9 +65,14 @@
                     </li>
                     <div class="dropdown-divider"></div>
                     <li>
-                      <a class="dropdown-item"
-                         href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a>
+                      <a class="dropdown-item" href="{% url 'dash_user' %}">Admin Panel</a>
                     </li>
+                    {% if user.is_superuser %}
+                      <li>
+                        <a class="dropdown-item"
+                           href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a>
+                      </li>
+                    {% endif %}
                   {% else %}
                     <li>
                       <a class="dropdown-item" href="#">{{ user.first_name }} {{ user.last_name }}</a>

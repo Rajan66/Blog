@@ -15,36 +15,43 @@
                          <div class="text">
                             <label>First Name</label>
                             <span></span>
-                            <input type="text" class="input" placeholder="Enter your first name" name="first_name"/>
+                            <input type="text" class="input" placeholder="Enter your first name" name="first_name" required/>
                         </div><br>
                         <div class="text">
                             <label>Last Name</label>
                             <span></span>
-                            <input type="text" class="input" placeholder="Enter your last name" name="last_name"/>
+                            <input type="text" class="input" placeholder="Enter your last name" name="last_name" required/>
                         </div><br>
                         <div class="text">
                             <label>Username</label>
                             <span></span>
-                            <input type="text" class="input" placeholder="Enter your username" name="username"/>
+                            <input type="text" class="input" placeholder="Enter your username" name="username" required/>
                         </div><br>
                         <div class="text">
                             <label>Email</label>
                             <span></span>
-                            <input type="email" class="input" placeholder="Enter your email" name="email"/>
+                            <input type="email" class="input" placeholder="Enter your email" name="email" required/>
                         </div><br>
                         <div class="text">
                             <label>Password</label>
                             <span></span>
-                            <input type="password" class="input" placeholder="Enter your password" name="password1"/>
+                            <input type="password" class="input" placeholder="Enter your password" name="password1" required/>
                         </div><br>
                         <div class="text">
                             <label>Confirm password</label>
                             <span></span>
-                            <input type="password" class="input" placeholder="Re-enter the password" name="password2"/>
+                            <input type="password" class="input" placeholder="Re-enter the password" name="password2" required/>
                         </div> 
                     <br>
                     <button type="submit" class="btn btn-info" name="Create User">Register</button>
-                    {{ form.errors }}
+                    {% for message in messages %}
+                        <p id="messages">{{ message }}</p>
+                    {% endfor %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
                 </form>
             </div>
         </div>

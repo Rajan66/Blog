@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, User, Comment
-from .forms import PostForm, EditForm, CommentForm
+from .forms import PostForm, EditForm, CommentForm,CategoryForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -149,3 +149,59 @@ def LikeView(request, pk):
         result = post.like_count
         post.save()
     return HttpResponseRedirect(reverse('article-details', args=[str(pk)]))
+
+
+def AdminView(request):
+    context={}
+    return render(request,'admin_dash.html')
+
+def CategoryDash(request):
+    objs = Category.objects.all()
+    return render(request,'dash_cat.html',{'objs':objs})
+
+def UserDash(request):
+    objs = User.objects.all()
+    return render(request,'dash_user.html',{'objs':objs})
+
+def PostDash(request):
+    objs = Post.objects.all()
+    return render(request,'dash_post.html',{'objs':objs})
+
+def CommentDash(request):
+    objs = Comment.objects.all()
+    return render(request,'dash_comment.html',{'objs':objs})
+
+
+# def UpdateCategoryView(request):
+#     context={}
+#     return render(request,'dash_edit_cat.html',context)
+
+class UpdateCategoryView(UpdateView):
+    model = Category
+    template_name = 'dash_edit_cat.html'
+    form_class = CategoryForm
+    
+    def get_context_data(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        category_menu = Category.objects.all()
+        context = super(UpdateCategoryView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
+
+
+class DeleteCategoryView(DeleteView):
+    model = Category
+    template_name = 'dash_del_cat.html'
+    success_url = reverse_lazy('dash_cat')
+
+ 
+
+    def get_context_data(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+
+        category_menu = Category.objects.all()
+        context = super(DeleteCategoryView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context

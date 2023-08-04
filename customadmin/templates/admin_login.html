@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block title %}
-    Login
+    Admin Login
 {% endblock title %}
 {% block content %}
     {% load static %}
     <div class="main1">
-        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endcomment %}
         <div class="container1">
             <h1>Log in</h1>
             <div class="form-group">
@@ -21,9 +21,11 @@
                     </div>
                     <br>
                     <button type="submit" class="btn btn-info">Login</button>
-                </form>
-            </div>
-            {% for message in messages %}<p id="messages">{{ message }}</p>{% endfor %}
+                </div>
+            </form>
+            {% for message in messages %}
+                <p id="messages">{{ message }}</p>
+            {% endfor %}
             {{ form.errors }}
         </div>
     </div>

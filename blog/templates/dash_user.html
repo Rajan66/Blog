@@ -1,0 +1,39 @@
+{% extends "admin_dash.html" %}
+{% block title %}
+    Users
+{% endblock title %}
+{% block content %}
+    {% load static %}
+    <div class="main1">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endcomment %}
+        <div class="container1">
+            <div class="col s12 l12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">S.no</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Superuser</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in objs %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ obj.username }}</td>
+                            <td>{{ obj.email }}</td>
+                            <td>{{ obj.first_name }}</td>
+                            <td>{{ obj.last_name }}</td>
+                            <td>{{ obj.is_superuser }}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

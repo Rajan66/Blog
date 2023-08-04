@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView, LikeView, CategoryListView
-
+from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView, AddCategoryView,UpdateCategoryView,DeleteCategoryView
+from .views import CategoryView, LikeView, CategoryListView, AdminView, CategoryDash, UserDash, CommentDash, PostDash
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-details'),
@@ -15,4 +15,11 @@ urlpatterns = [
     path('category/<str:cat>/', CategoryView, name="category"),
     path('category-list/', CategoryListView, name="category-list"),
     path('like/<int:pk>', LikeView, name="like"),
+    path('admin_dash/', AdminView, name="admin_dash"),
+    path('admin_dash/category/', CategoryDash, name="dash_cat"),
+    path('admin_dash/user/', UserDash, name="dash_user"),
+    path('admin_dash/post/', PostDash, name="dash_post"),
+    path('admin_dash/comment/', CommentDash, name="dash_comment"),
+    path('admin_dash/category/edit/<slug:pk>', UpdateCategoryView.as_view(), name="dash_edit_cat"),
+    path('admin_dash/category/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
 ]

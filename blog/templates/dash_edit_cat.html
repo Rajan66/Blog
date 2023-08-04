@@ -1,0 +1,22 @@
+{% extends "admin_dash.html" %}
+{% block title %}
+    Edit Post
+{% endblock title %}
+Edit Category
+{% block content %}
+    {% if user.is_superuser %}
+        <h1>Update Category</h1>
+        <br>
+        <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <button type="submit" class="btn btn-outline-info shadow">Update</button>
+            </form>
+        </div>
+       
+    {% else %}
+        <h1>Eh? This might not be the page you are looking for</h1>
+    {% endif %}
+{% endblock content %}

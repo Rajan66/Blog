@@ -25,8 +25,6 @@ def registerPage(request):
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
             return redirect('login')
-        else:
-            print('Error 404')
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)

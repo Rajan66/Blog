@@ -1,0 +1,36 @@
+{% extends "admin_dash.html" %}
+{% block title %}
+    Comments
+{% endblock title %}
+{% block content %}
+    {% load static %}
+    <div class="main1">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endcomment %}
+        <div class="container1">
+            <div class="col s12 l12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">S.no</th>
+                        <th scope="col">Post</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in objs %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ obj.post }}</td>
+                            <td>{{ obj.user }}</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
