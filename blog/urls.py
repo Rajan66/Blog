@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin_dash/comment/', CommentDash, name="dash_comment"),
     path('admin_dash/category/edit/<slug:pk>', UpdateCategoryView.as_view(), name="dash_edit_cat"),
     path('admin_dash/category/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
+    path('admin_dash/comment/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
+    path('admin_dash/category/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
 ]

@@ -195,11 +195,8 @@ class DeleteCategoryView(DeleteView):
     template_name = 'dash_del_cat.html'
     success_url = reverse_lazy('dash_cat')
 
- 
-
     def get_context_data(self, *args, **kwargs):
         pk = self.kwargs.get('pk')
-
         category_menu = Category.objects.all()
         context = super(DeleteCategoryView, self).get_context_data(*args, **kwargs)
         context['category_menu'] = category_menu
