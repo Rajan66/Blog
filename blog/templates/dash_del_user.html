@@ -1,8 +1,7 @@
 {% extends "admin_dash.html" %}
-{% block title %} Delete Post {% endblock title %}
+{% block title %} Delete User {% endblock title %}
 {% block content %}
-{% if user.is_superuser %}
-    <h1>Delete Post</h1>
+    <h1>Delete User</h1>
     <br>
    
     <form method="post">
@@ -12,12 +11,9 @@
             <p>You are about to delete the category permanently. You will not be able to undo this action.</p>
             <button type="button" class="btn btn-outline-secondary shadow">
                {# djlint:off H021 #}
-                <a href="{% url 'dash_post' %}" style="text-decoration:none; color:black;">Take me Back!</a>
+                <a href="{% url 'dash_user' %}" style="text-decoration:none; color:black;">Take me Back!</a>
             </button>
             <button type="submit" class="btn btn-outline-danger shadow">Delete</button>
         </div>
     </form>
-{% else %}
-<h2>Eh? This might not be the page you are looking for</h2>
-{% endif %}
 {% endblock content %}

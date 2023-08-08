@@ -60,9 +60,9 @@
     <br>
     {% if user.is_authenticated and post.author.id == user.id %}
         <small><a href="{% url 'edit-post' post.pk %}"
-   class="btn btn-outline-secondary shadow btn-1">Edit</a></small> &nbsp;
+   class="btn btn-outline-secondary">Edit</a></small> &nbsp;
         <small><a href="{% url 'delete-post' post.pk %}"
-   class="btn btn-outline-danger shadow btn-2">Delete</a></small> &nbsp;
+   class="btn btn-outline-danger">Delete</a></small> &nbsp;
         <br>
         <br>
     {% endif %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView, AddCategoryView,UpdateCategoryView,DeleteCategoryView
+from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView, AddCategoryView,UpdateCategoryView,DeleteCategoryView,DeleteCommentView,DeleteUserView,AdminDeletePostView
 from .views import CategoryView, LikeView, CategoryListView, AdminView, CategoryDash, UserDash, CommentDash, PostDash
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin_dash/comment/', CommentDash, name="dash_comment"),
     path('admin_dash/category/edit/<slug:pk>', UpdateCategoryView.as_view(), name="dash_edit_cat"),
     path('admin_dash/category/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
-    path('admin_dash/comment/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
-    path('admin_dash/category/<slug:pk>/remove', DeleteCategoryView.as_view(), name='dash_del_cat'),
+    path('admin_dash/post/<slug:pk>/remove', AdminDeletePostView.as_view(), name='dash_del_post'),
+    path('admin_dash/comment/<slug:pk>/remove', DeleteCommentView.as_view(), name='dash_del_comment'),
+    path('admin_dash/user/<slug:pk>/remove', DeleteUserView.as_view(), name='dash_del_user'),
 ]

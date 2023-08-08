@@ -180,6 +180,7 @@ class UpdateCategoryView(UpdateView):
     model = Category
     template_name = 'dash_edit_cat.html'
     form_class = CategoryForm
+    success_url = reverse_lazy('dash_cat')
     
     def get_context_data(self, *args, **kwargs):
         pk = self.kwargs.get('pk')
@@ -188,7 +189,7 @@ class UpdateCategoryView(UpdateView):
         context['category_menu'] = category_menu
 
         return context
-
+    
 
 class DeleteCategoryView(DeleteView):
     model = Category
@@ -200,5 +201,42 @@ class DeleteCategoryView(DeleteView):
         category_menu = Category.objects.all()
         context = super(DeleteCategoryView, self).get_context_data(*args, **kwargs)
         context['category_menu'] = category_menu
+
+        return context
+
+class AdminDeletePostView(DeleteView):
+    model = Post
+    template_name = 'dash_del_post.html'
+    success_url = reverse_lazy('dash_post')
+
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(AdminDeletePostView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+
+        return context
+    
+class DeleteCommentView(DeleteView):
+    model = Comment
+    template_name = 'dash_del_comment.html'
+    success_url = reverse_lazy('dash_comment')
+
+    def get_context_data(self, *args, **kwargs):
+        comment_menu = Comment.objects.all()
+        context = super(DeleteCommentView, self).get_context_data(*args, **kwargs)
+        context['comment_menu'] = comment_menu
+
+        return context
+    
+class DeleteUserView(DeleteView):
+    model = User
+    template_name = 'dash_del_user.html'
+    success_url = reverse_lazy('dash_user')
+
+    def get_context_data(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        user_menu = User.objects.all()
+        context = super(DeleteUserView, self).get_context_data(*args, **kwargs)
+        context['user_menu'] = user_menu
 
         return context

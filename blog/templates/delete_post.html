@@ -10,11 +10,11 @@
             {% csrf_token %}
             <strong><br><u>Warning!</u></strong>
             <p>You are about to delete your blog post permanently. You will not be able to undo this action.</p>
-            <button type="button" class="btn btn-outline-secondary shadow">
+            <button type="button" class="btn btn-outline-secondary">
                {# djlint:off H021 #}
                 <a href="{% url 'home' %}" style="text-decoration:none; color:black;">Take me Back!</a>
             </button>
-            <button type="submit" class="btn btn-outline-danger shadow">Delete</button>
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
         </div>
     </form>
 {% else %}

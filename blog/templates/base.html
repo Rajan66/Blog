@@ -34,7 +34,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          {% if user.is_authenticated and user.id == 1 or user.id == 2 %}
+          {% if user.is_superuser %}
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-post' %}">Add post</a>
@@ -149,10 +149,6 @@
               </li>
             </ul>
           {% endif %}
-          {% comment %} <form class="form-inline my-2 my-lg-0" role="search">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> {% endcomment %}
         </div>
       </div>
     </nav>
@@ -165,6 +161,5 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    {% comment %} <script type="text/javascript" src="{% static 'js/index.js' %}"></script> {% endcomment %}
   </body>
 </html>
