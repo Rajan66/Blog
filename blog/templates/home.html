@@ -28,24 +28,4 @@
             <hr>
         {% endfor %}
     </ul>
-    {% comment %} <script>
-        $('#myForm').trigger("reset"); 
-        $(document).on('click', '#like-button', function (e) {
-        e.preventDefault();
-        $.ajax({
-                type: 'POST',
-                url: '{% url "like" post.pk %}',
-                data: {
-                    postid: $('#like-button').val(),
-                    action: 'post'
-                },
-                success: function (json) {
-                document.getElementById("like_count").innerHTML = json['result']  
-                },
-                error: function (xhr, errmsg, err) {
-        
-                }
-            });
-        })
-    </script> {% endcomment %}
 {% endblock content %}
