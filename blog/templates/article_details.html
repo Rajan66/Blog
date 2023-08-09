@@ -8,7 +8,7 @@
     {% if user.is_authenticated %}
         <form action="{% url 'like' post.pk %}" method="post">
             {% csrf_token %}
-            By:<a href="{% url 'show-profile' post.author.profile.id %}"> {{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }}
+            By:<a href="{% url 'show-profile' post.author.profile.id %}"> {{ post.author.first_name }} {{ post.author.last_name }}</a>  - {{ post.author.email }} - {{ post.post_date }} - {{ post.category.capitalize }}
             <div class="like-box">
                 <span id="like_count">{{ post.like_count }}</span>
                 <button type="submit"
